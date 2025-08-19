@@ -1,0 +1,66 @@
+<div class="crear-jugador-container">
+  <h2>Crear Nuevo Jugador</h2>
+  <form (ngSubmit)="crearJugador()">
+    <div class="form-group">
+      <label for="short_name">Nombre Corto:</label>
+      <input id="short_name" type="text" [(ngModel)]="nuevoJugador.short_name" name="short_name" required>
+    </div>
+    <div class="form-group">
+      <label for="long_name">Nombre Completo:</label>
+      <input id="long_name" type="text" [(ngModel)]="nuevoJugador.long_name" name="long_name">
+    </div>
+    <div class="form-group">
+      <label for="nationality_name">Nacionalidad:</label>
+      <input id="nationality_name" type="text" [(ngModel)]="nuevoJugador.nationality_name" name="nationality_name">
+    </div>
+    <div class="form-group">
+      <label for="club_name">Club:</label>
+      <input id="club_name" type="text" [(ngModel)]="nuevoJugador.club_name" name="club_name">
+    </div>
+    <div class="form-group">
+      <label for="player_positions">Posición:</label>
+      <input id="player_positions" type="text" [(ngModel)]="nuevoJugador.player_positions" name="player_positions">
+    </div>
+    <div class="form-group">
+      <label for="overall">Overall:</label>
+      <input id="overall" type="number" [(ngModel)]="nuevoJugador.overall" name="overall">
+    </div>
+    <div class="form-group">
+      <label for="potential">Potencial:</label>
+      <input id="potential" type="number" [(ngModel)]="nuevoJugador.potential" name="potential">
+    </div>
+    <div class="form-group">
+      <label for="gender">Género:</label>
+      <select id="gender" [(ngModel)]="nuevoJugador.gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="pace">Pace:</label>
+      <input id="pace" type="number" [(ngModel)]="nuevoJugador.pace" name="pace">
+    </div>
+    <div class="form-group">
+      <label for="shooting">Shooting:</label>
+      <input id="shooting" type="number" [(ngModel)]="nuevoJugador.shooting" name="shooting">
+    </div>
+    <div class="form-group">
+      <label for="passing">Passing:</label>
+      <input id="passing" type="number" [(ngModel)]="nuevoJugador.passing" name="passing">
+    </div>
+    <div class="form-group">
+      <label for="dribbling">Dribbling:</label>
+      <input id="dribbling" type="number" [(ngModel)]="nuevoJugador.dribbling" name="dribbling">
+    </div>
+    <div class="form-group">
+      <label for="defending">Defending:</label>
+      <input id="defending" type="number" [(ngModel)]="nuevoJugador.defending" name="defending">
+    </div>
+    <div class="form-group">
+      <label for="physic">Physic:</label>
+      <input id="physic" type="number" [(ngModel)]="nuevoJugador.physic" name="physic">
+    </div>
+
+    <button type="submit">Crear Jugador</button>
+  </form>
+</div>
