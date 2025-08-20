@@ -1,22 +1,23 @@
-<nav class="bg-gray-800 p-4">
-  <div class="container mx-auto flex justify-between items-center">
+<nav class="navbar">
+  <div class="navbar-logo">
     <a routerLink="/" class="text-white text-2xl font-bold">FIFA App</a>
-    <div class="space-x-4">
-      <a routerLink="/" class="text-gray-300 hover:text-white">Inicio</a>
-      <a routerLink="/jugadores" class="text-gray-300 hover:text-white">Jugadores</a>
-      <a routerLink="/jugador/search" class="text-gray-300 hover:text-white">Buscar Jugador</a>
-      <a routerLink="/jugador/create" routerLinkActive="active" class="text-gray-300 hover:text-white">Crear Jugador</a>
-      
-      <ng-container *ngIf="!isLoggedIn()">
-        <a routerLink="/login" class="text-gray-300 hover:text-white">Login</a>
-        <a routerLink="/register" class="text-gray-300 hover:text-white">Registro</a>
-      </ng-container>
-      
-      <ng-container *ngIf="isLoggedIn()">
-        <a (click)="onLogout()" class="text-gray-300 hover:text-white cursor-pointer">Logout</a>
-      </ng-container>
-    </div>
   </div>
+
+  <ul class="navbar-links">
+    <li><a routerLink="/" class="text-gray-300 hover:text-white">Inicio</a></li>
+    <li><a routerLink="/jugadores" class="text-gray-300 hover:text-white">Jugadores</a></li>
+    <li><a routerLink="/jugador/search" class="text-gray-300 hover:text-white">Buscar Jugador</a></li>
+    <li><a routerLink="/jugador/create" routerLinkActive="active" class="text-gray-300 hover:text-white">Crear Jugador</a></li>
+    
+    <ng-container *ngIf="!isLoggedIn()">
+      <li><a routerLink="/login" class="text-gray-300 hover:text-white">Login</a></li>
+      <li><a routerLink="/register" class="text-gray-300 hover:text-white">Registro</a></li>
+    </ng-container>
+    
+    <ng-container *ngIf="isLoggedIn()">
+      <li><a (click)="onLogout()" class="text-gray-300 hover:text-white cursor-pointer">Logout</a></li>
+    </ng-container>
+  </ul>
 </nav>
 
 <main class="container mx-auto p-4">
