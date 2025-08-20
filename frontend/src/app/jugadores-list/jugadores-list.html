@@ -1,69 +1,124 @@
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">FIFA Player Database</h1>
 
-  <!-- Filtros y botón de descarga -->
   <div class="mb-6 bg-gray-100 p-4 rounded-lg shadow-md flex flex-wrap gap-4 items-center">
     <div class="flex-grow">
       <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-      <input type="text" id="name" [(ngModel)]="filtros.name" (input)="onFiltrosChange()"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="filtros.name"
+        (input)="onFiltrosChange()"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+      />
     </div>
     <div class="flex-grow">
       <label for="club" class="block text-sm font-medium text-gray-700">Club</label>
-      <input type="text" id="club" [(ngModel)]="filtros.club" (input)="onFiltrosChange()"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <input
+        type="text"
+        id="club"
+        [(ngModel)]="filtros.club"
+        (input)="onFiltrosChange()"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+      />
     </div>
     <div class="flex-grow">
       <label for="nationality" class="block text-sm font-medium text-gray-700">Nacionalidad</label>
-      <input type="text" id="nationality" [(ngModel)]="filtros.nationality" (input)="onFiltrosChange()"
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <input
+        type="text"
+        id="nationality"
+        [(ngModel)]="filtros.nationality"
+        (input)="onFiltrosChange()"
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+      />
     </div>
-    
-    <!-- Botón de Exportar a CSV -->
+
     <div class="flex-grow-0 mt-6 md:mt-0">
-      <button (click)="downloadCsv()"
-        class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+      <button
+        (click)="downloadCsv()"
+        class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+      >
         Exportar a CSV
       </button>
     </div>
   </div>
 
-  <!-- Mensaje de carga -->
   <div *ngIf="isLoading" class="text-center p-4 text-lg text-gray-500">Cargando jugadores...</div>
 
-  <!-- Tabla de resultados -->
   <div *ngIf="!isLoading" class="overflow-x-auto bg-white rounded-lg shadow-md">
     <table class="min-w-full divide-y divide-gray-200">
+
       <thead class="bg-gray-50">
         <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Club</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nacionalidad</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posición</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valoración</th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Nombre
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Club
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Nacionalidad
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Overall
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Acciones
+          </th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <tr *ngFor="let jugador of jugadores" class="hover:bg-gray-50">
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ jugador.short_name }}</td>
+        <tr *ngFor="let jugador of jugadores">
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+            {{ jugador.short_name }}
+          </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ jugador.club_name }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ jugador.nationality_name }}</td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ jugador.player_positions }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {{ jugador.nationality_name }}
+          </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ jugador.overall }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <a
+              [routerLink]="['/jugador/search']"
+              [queryParams]="{ id: jugador.player_id }"
+              class="text-indigo-600 hover:text-indigo-900"
+            >
+              Editar
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Paginación -->
   <div *ngIf="totalPages > 1 && !isLoading" class="mt-6 flex justify-center items-center space-x-2">
-    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1"
-      class="px-4 py-2 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed">Anterior</button>
+    <button
+      (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="px-4 py-2 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Anterior
+    </button>
     <span class="text-sm text-gray-700">Página {{ currentPage }} de {{ totalPages }}</span>
-    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages"
-      class="px-4 py-2 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed">Siguiente</button>
+    <button
+      (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      class="px-4 py-2 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Siguiente
+    </button>
   </div>
-  
+
   <div *ngIf="totalPlayers === 0 && !isLoading" class="mt-6 text-center text-gray-500">
     No se encontraron jugadores que coincidan con los filtros.
   </div>

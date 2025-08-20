@@ -1,36 +1,3 @@
-<!-- <div class="jugador-container">
-  <h2>Buscar Jugador por ID</h2>
-  <div class="seccion-busqueda">
-    <input type="number" [(ngModel)]="jugadorId" placeholder="Ingresa el ID del jugador">
-    <button (click)="buscarJugador()">Buscar</button>
-  </div>
-
-  <div *ngIf="jugador" class="info-jugador-container">
-    <div class="detalles-jugador">
-      <h3>{{ jugador.short_name }}</h3>
-      <p><strong>Nombre Completo:</strong> {{ jugador.long_name }}</p>
-      <p><strong>Nacionalidad:</strong> {{ jugador.nationality_name }}</p>
-      <p><strong>Edad:</strong> {{ jugador.age }}</p>
-      <p><strong>Altura:</strong> {{ jugador.height_cm }} cm</p>
-      <p><strong>Peso:</strong> {{ jugador.weight_kg }} kg</p>
-      <p><strong>Posiciones:</strong> {{ jugador.player_positions }}</p>
-      <p><strong>Club:</strong> {{ jugador.club_name }}</p>
-      <p><strong>Posición en el Club:</strong> {{ jugador.club_position }}</p>
-      <p><strong>Género:</strong> {{ jugador.gender }}</p>
-      <p><strong>Pie Preferido:</strong> {{ jugador.preferred_foot }}</p>
-      <p><strong>Reputación Internacional:</strong> {{ jugador.international_reputation }}</p>
-      <p><strong>Overall:</strong> {{ jugador.overall }}</p>
-      <p><strong>Potencial:</strong> {{ jugador.potential }}</p>
-      <p><strong>Valor:</strong> ${{ jugador.value_eur | number }}</p>
-      <p><strong>Salario:</strong> ${{ jugador.wage_eur | number }}</p>
-    </div>
-
-    <div class="grafico-jugador">
-      <canvas id="jugadorHabilidadesChart"></canvas>
-    </div>
-  </div>
-</div> -->
-
 <div class="jugador-container">
   <h2>Buscar Jugador por ID</h2>
   <div class="seccion-busqueda">

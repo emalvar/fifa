@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JugadoresService } from '../jugadores';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-jugadores-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   templateUrl: './jugadores-list.html',
   styleUrls: ['./jugadores-list.css']
 })
