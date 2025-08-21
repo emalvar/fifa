@@ -35,7 +35,9 @@ Este repositorio contiene una aplicación web full-stack desarrollada como parte
 ## 📂 Estructura del Proyecto
 
 fifa-fullstack/
-├── backend/ # API con Node.js + Express 
+├── backend/              # API con Node.js + Express 
+│   └── scripts/          # Scripts útiles
+│       └── importData.js # Permite importar jugadores desde CSV a la BD
 ├── frontend/ # Aplicación Angular
 ├── db/ # Archivos CSV de jugadores 
 ├── docker-compose.yml 
@@ -54,13 +56,37 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ## ▶️ Instrucciones de Ejecución
 
-1. Clona el repositorio
-Levanta los contenedores:
-    docker-compose up --build
-Accede a la aplicación:
-    Frontend: http://localhost:80
-    Backend API: http://localhost:3000
-    Base de Datos (MySQL): localhost:3307
+1. **Clona el repositorio**
+   ```bash
+   git clone <url-del-repo>
+   cd fifa-fullstack
+   ```
+
+2. **Levanta los contenedores**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Accede a la aplicación**
+   - Frontend: [http://localhost:80]
+   - Backend API: [http://localhost:3000]
+   - Base de Datos (MySQL): `localhost:3307`
+
+---
+
+## 📥 Importar Datos desde CSV
+
+En la carpeta `backend/scripts/` se encuentra el archivo **`importData.js`**, que permite cargar los jugadores desde los CSV ubicados en la carpeta `db/` hacia la base de datos.
+
+Para ejecutarlo dentro del contenedor del backend:
+
+```bash
+docker exec -it fifa-backend npm run import-data
+```
+
+Esto tomará los archivos `male_players.csv` y `female_players.csv` y los insertará en la tabla correspondiente.
+
+---
 
 📌 Endpoints de la API
 Método	Endpoint	        Descripción	                        Autenticación
@@ -71,6 +97,7 @@ POST	/api/players	    Crear jugador nuevo	                ✅
 PUT	    /api/players/:id	Actualizar jugador existente    	✅
 DELETE	/api/players/:id	Eliminar jugador	                ✅
 ✅ = requiere token JWT
+
 
 🧪 Ejemplo de Uso de la API
 Login
@@ -84,7 +111,6 @@ curl -X GET http://localhost:3000/api/players \
 
 📈 Próximos Pasos / Mejoras
 [ ] Mejoras de estilo y experiencia de usuario (UI/UX)
-[ ] Importación de jugadores vía archivo CSV
 [ ] Visualización de evolución de habilidades de jugadores en línea de tiempo
 [ ] Documentación interactiva con Swagger (/api-docs)
 
