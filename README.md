@@ -76,7 +76,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ## 📥 Importar Datos desde CSV
 
-En la carpeta `backend/scripts/` se encuentra el archivo **`importData.js`**, que permite cargar los jugadores desde los CSV ubicados en la carpeta `db/` hacia la base de datos.
+En la carpeta `backend/scripts/` se encuentra el archivo **`importData.js`**, que permite cargar los jugadores desde los CSV ubicados en la misma carpeta hacia la base de datos.
 
 Para ejecutarlo dentro del contenedor del backend:
 
@@ -89,13 +89,13 @@ Esto tomará los archivos `male_players.csv` y `female_players.csv` y los insert
 ---
 
 📌 Endpoints de la API
-Método	Endpoint	        Descripción	                        Autenticación
-POST	/api/auth/register	Registro de nuevo usuario	        ❌
-POST	/api/auth/login	    Login de usuario	                ❌
-GET	    /api/players	    Listado de jugadores	            ✅
-POST	/api/players	    Crear jugador nuevo	                ✅
-PUT	    /api/players/:id	Actualizar jugador existente    	✅
-DELETE	/api/players/:id	Eliminar jugador	                ✅
+Método	Endpoint	            Descripción	                  Autenticación
+POST	   /api/auth/register	Registro de nuevo usuario     ❌
+POST	   /api/auth/login	   Login de usuario              ❌
+GET	   /api/players	      Listado de jugadores          ✅
+POST	   /api/players	      Crear jugador nuevo           ✅
+PUT	   /api/players/:id	   Actualizar jugador existente  ✅
+DELETE	/api/players/:id	   Eliminar jugador	            ✅
 ✅ = requiere token JWT
 
 
@@ -110,8 +110,8 @@ curl -X GET http://localhost:3000/api/players \
   -H "Authorization: Bearer TU_TOKEN_AQUI"
 
 📈 Próximos Pasos / Mejoras
+[ ] En la base de datos se pueden almacenar las diferentes habilidades de los jugadores a lo largo de los años. Se debe desarrollar una pantalla con una línea de tiempo que permita seleccionar una habilidad específica y visualizar cómo ha variado a lo largo de los años.
+[ ] Documentar cómo correr la aplicación y los endpoints disponibles. (Compartir colección de Postman o implementar Swagger)
 [ ] Mejoras de estilo y experiencia de usuario (UI/UX)
-[ ] Visualización de evolución de habilidades de jugadores en línea de tiempo
-[ ] Documentación interactiva con Swagger (/api-docs)
 
 Desarrollado por Emanuel Alvarez para el Challenge XAcademy DEV 2025 🚀
