@@ -1,8 +1,8 @@
 <div class="jugador-container">
   <h2>Buscar Jugador por ID</h2>
   <div class="seccion-busqueda">
-    <input type="number" [(ngModel)]="jugadorId" placeholder="Ingresa el ID del jugador">
-    <button (click)="buscarJugador()">Buscar</button>
+    <input type="number" [(ngModel)]="jugadorId" placeholder="Ingresa el ID del jugador" />
+   <button (click)="buscarJugador()">Buscar</button>
   </div>
 
   <div *ngIf="jugador" class="info-jugador-container">
@@ -27,26 +27,42 @@
       </ng-container>
 
       <ng-container *ngIf="modoEdicion">
-        <h3><input type="text" [(ngModel)]="jugadorCopia.short_name"></h3>
-        <p><strong>Nombre Completo:</strong> <input type="text" [(ngModel)]="jugadorCopia.long_name"></p>
-        <p><strong>Nacionalidad:</strong> <input type="text" [(ngModel)]="jugadorCopia.nationality_name"></p>
-        <p><strong>Posición:</strong> <input type="text" [(ngModel)]="jugadorCopia.player_positions"></p>
-        <p><strong>Club:</strong> <input type="text" [(ngModel)]="jugadorCopia.club_name"></p>
-        <p><strong>Overall:</strong> <input type="number" [(ngModel)]="jugadorCopia.overall"></p>
-        <p><strong>Potencial:</strong> <input type="number" [(ngModel)]="jugadorCopia.potential"></p>
-        
-        <p><strong>Pace:</strong> <input type="number" [(ngModel)]="jugadorCopia.pace"></p>
-        <p><strong>Shooting:</strong> <input type="number" [(ngModel)]="jugadorCopia.shooting"></p>
-        <p><strong>Passing:</strong> <input type="number" [(ngModel)]="jugadorCopia.passing"></p>
-        <p><strong>Dribbling:</strong> <input type="number" [(ngModel)]="jugadorCopia.dribbling"></p>
-        <p><strong>Defending:</strong> <input type="number" [(ngModel)]="jugadorCopia.defending"></p>
-        <p><strong>Physic:</strong> <input type="number" [(ngModel)]="jugadorCopia.physic"></p>
+        <h3><input type="text" [(ngModel)]="jugadorCopia.short_name" /></h3>
+        <p>
+          <strong>Nombre Completo:</strong>
+          <input type="text" [(ngModel)]="jugadorCopia.long_name" />
+        </p>
+        <p>
+          <strong>Nacionalidad:</strong>
+          <input type="text" [(ngModel)]="jugadorCopia.nationality_name" />
+        </p>
+        <p>
+          <strong>Posición:</strong>
+          <input type="text" [(ngModel)]="jugadorCopia.player_positions" />
+        </p>
+        <p><strong>Club:</strong> <input type="text" [(ngModel)]="jugadorCopia.club_name" /></p>
+        <p><strong>Overall:</strong> <input type="number" [(ngModel)]="jugadorCopia.overall" /></p>
+        <p>
+          <strong>Potencial:</strong> <input type="number" [(ngModel)]="jugadorCopia.potential" />
+        </p>
 
+        <p><strong>Pace:</strong> <input type="number" [(ngModel)]="jugadorCopia.pace" /></p>
+        <p>
+          <strong>Shooting:</strong> <input type="number" [(ngModel)]="jugadorCopia.shooting" />
+        </p>
+        <p><strong>Passing:</strong> <input type="number" [(ngModel)]="jugadorCopia.passing" /></p>
+        <p>
+          <strong>Dribbling:</strong> <input type="number" [(ngModel)]="jugadorCopia.dribbling" />
+        </p>
+        <p>
+          <strong>Defending:</strong> <input type="number" [(ngModel)]="jugadorCopia.defending" />
+        </p>
+        <p><strong>Physic:</strong> <input type="number" [(ngModel)]="jugadorCopia.physic" /></p>
       </ng-container>
     </div>
 
     <div class="grafico-jugador">
-      <canvas id="jugadorHabilidadesChart"></canvas>
+      <canvas id="jugadorHabilidadesChart" width="400" height="400"></canvas>
     </div>
   </div>
 </div>
