@@ -1,4 +1,5 @@
 // import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
 // import { JugadoresService } from '../jugadores';
 // import Chart from 'chart.js/auto';
 // import { ChartConfiguration } from 'chart.js';
@@ -15,20 +16,30 @@
 // export class JugadorDetallesComponent implements OnInit {
 //   jugadorId: number | null = null;
 //   jugador: any;
-//   jugadorCopia: any; 
+//   jugadorCopia: any;
 //   chart: any;
 //   chartData: any;
-//   modoEdicion: boolean = false; 
+//   modoEdicion: boolean = false;
 
-//   constructor(private jugadoresService: JugadoresService) {}
+//   constructor(
+//     private jugadoresService: JugadoresService,
+//     private route: ActivatedRoute
+//   ) {}
 
-//   ngOnInit(): void {}
+//   ngOnInit(): void {
+//     this.route.queryParams.subscribe((params) => {
+//       if (params['id']) {
+//         this.jugadorId = +params['id']; 
+//         this.buscarJugador();
+//       }
+//     });
+//   }
 
 //   buscarJugador(): void {
 //     if (this.jugadorId) {
 //       this.jugadoresService.getJugadorById(this.jugadorId).subscribe((data) => {
 //         this.jugador = data;
-//         this.jugadorCopia = { ...data }; 
+//         this.jugadorCopia = { ...data };
 //         this.actualizarGrafico();
 //         this.modoEdicion = false;
 //       });
@@ -128,12 +139,12 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Importar ActivatedRoute
 import { JugadoresService } from '../jugadores';
 import Chart from 'chart.js/auto';
 import { ChartConfiguration } from 'chart.js';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jugador-detalles',
@@ -152,15 +163,14 @@ export class JugadorDetallesComponent implements OnInit {
 
   constructor(
     private jugadoresService: JugadoresService,
-    private route: ActivatedRoute // Inyectar ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    // Suscribirse a los parámetros de la URL para obtener el ID
     this.route.queryParams.subscribe((params) => {
-      if (params['id']) {
-        // Convertir el id a número, ya que el servicio lo espera así
-        this.jugadorId = +params['id']; 
+      const idFromUrl = params['id'];
+      if (idFromUrl) {
+        this.jugadorId = parseInt(idFromUrl, 10);
         this.buscarJugador();
       }
     });
@@ -168,12 +178,26 @@ export class JugadorDetallesComponent implements OnInit {
 
   buscarJugador(): void {
     if (this.jugadorId) {
-      this.jugadoresService.getJugadorById(this.jugadorId).subscribe((data) => {
-        this.jugador = data;
-        this.jugadorCopia = { ...data };
-        this.actualizarGrafico();
-        this.modoEdicion = false;
+      this.jugadoresService.getJugadorById(this.jugadorId).subscribe({
+        next: (data) => {
+          this.jugador = data;
+          this.jugadorCopia = { ...data };
+          this.actualizarGrafico();
+          this.modoEdicion = false;
+        },
+        error: (error) => {
+          console.error('Error al buscar el jugador:', error);
+          this.jugador = null; 
+          if (this.chart) {
+            this.chart.destroy(); 
+          }
+        }
       });
+    } else {
+      this.jugador = null;
+      if (this.chart) {
+        this.chart.destroy();
+      }
     }
   }
 
@@ -199,6 +223,9 @@ export class JugadorDetallesComponent implements OnInit {
 
   actualizarGrafico(): void {
     if (!this.jugador) {
+      if (this.chart) {
+        this.chart.destroy();
+      }
       return;
     }
 

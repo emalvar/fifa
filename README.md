@@ -109,9 +109,10 @@ Acceso con Token
 curl -X GET http://localhost:3000/api/players \
   -H "Authorization: Bearer TU_TOKEN_AQUI"
 
-📈 Próximos Pasos / Mejoras
+📈 Próximos Pasos / Pendientes
 [ ] En la base de datos se pueden almacenar las diferentes habilidades de los jugadores a lo largo de los años. Se debe desarrollar una pantalla con una línea de tiempo que permita seleccionar una habilidad específica y visualizar cómo ha variado a lo largo de los años.
 [ ] Documentar cómo correr la aplicación y los endpoints disponibles. (Compartir colección de Postman o implementar Swagger)
 [ ] Mejoras de estilo y experiencia de usuario (UI/UX)
+[ ] Desarrollo responsivo (el sitio no fue diseniado mobile first)
 
 Desarrollado por Emanuel Alvarez para el Challenge XAcademy DEV 2025 🚀
